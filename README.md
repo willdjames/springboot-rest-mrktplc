@@ -3,7 +3,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 
 * Implementações:
 - [X] Criar projeto no spring initializr
-- [ ] POST /compras | body:{cdCliente, cdCompra, valorCompra}
+- [X] POST /compras | body:{cdCliente, cdCompra, valorCompra}
 - [ ] GET /clientes/{id}/compras | das compras do cliente
 - [ ] Console do H2
 - [ ] ORM do banco de dados e inserts
