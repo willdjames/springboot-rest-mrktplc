@@ -10,6 +10,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [ ] MDB (Produtor) do envio da compra para fila de pagamento
 - [ ] MDB (Consumidor) do recebimento do pagamento
 - [ ] Atualização do pagamento da compra no BD
+- [ ] Empacotar em container Docker
 
 
 ### Reference Documentation
