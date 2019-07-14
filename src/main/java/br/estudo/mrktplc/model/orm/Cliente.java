@@ -1,19 +1,47 @@
 package br.estudo.mrktplc.model.orm;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_cliente")
+@Table(
+        name = "tb_cliente",
+        uniqueConstraints = {@UniqueConstraint(columnNames = "cli_doc", name = "docUnique")}
+)
 public class Cliente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cli_cd")
     private Integer codigo;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @Column(name = "cli_doc")
+    private String documento;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cli_cd")
-    private List<Compra> compras;
+    private List<Compra> compras = new ArrayList<>();
 
     public Cliente(){}
+
+    public Cliente(String documento, Compra compra) {
+        this.documento = documento;
+        this.compras.add(compra);
+    }
+
+    public void salva(Compra novaCompra) {
+        this.compras.add(novaCompra);
+    }
+
+    public List<Compra> getCompras(){
+        return this.compras;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "codigo:" + codigo +
+                ", documento:'" + documento +
+                '}';
+    }
 }

@@ -2,7 +2,9 @@ package br.estudo.mrktplc.controller;
 
 import br.estudo.mrktplc.business.CompraService;
 import br.estudo.mrktplc.model.CompraForm;
-import br.estudo.mrktplc.model.CompraRespostaDto;
+import br.estudo.mrktplc.model.RespostaDaCompraDto;
+import br.estudo.mrktplc.model.orm.Cliente;
+import br.estudo.mrktplc.model.orm.Compra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,16 +22,17 @@ public class CompraController {
     private CompraService compraService;
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<CompraRespostaDto> salvarCompraApi(@RequestBody CompraForm novaCompra){
+    public ResponseEntity<RespostaDaCompraDto> salvarCompraApi(@RequestBody CompraForm novaCompra){
 
-        CompraForm compraRegistrada = compraService.salvar(novaCompra);
+        Cliente cliente = compraService.salva(novaCompra);
 
-        boolean registradaComSucesso = false;
+        Compra compraRealizada = cliente.getCompras().get(cliente.getCompras().size() - 1);
 
-        if(compraRegistrada != null) registradaComSucesso = true;
+        RespostaDaCompraDto corpoRespostaCompra = new RespostaDaCompraDto(
+                compraRealizada.getCodigo()
+                , compraRealizada.getValor()
+        );
 
-        CompraRespostaDto resposta = new CompraRespostaDto(novaCompra.getCdCompra(), registradaComSucesso);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
+        return ResponseEntity.status(HttpStatus.CREATED).body(corpoRespostaCompra);
     }
 }

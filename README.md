@@ -7,6 +7,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [ ] GET /clientes/{id}/compras | das compras do cliente
 - [X] Console do H2
 - [X] ORM do banco de dados e inserts
+- [X] Persistencia da compra
 - [ ] MDB (Produtor) do envio da compra para fila de pagamento
 - [ ] MDB (Consumidor) do recebimento do pagamento
 - [ ] Atualização do pagamento da compra no BD

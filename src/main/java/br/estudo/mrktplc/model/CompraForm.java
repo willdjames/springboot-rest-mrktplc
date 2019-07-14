@@ -1,30 +1,27 @@
 package br.estudo.mrktplc.model;
 
+import br.estudo.mrktplc.model.orm.Compra;
+
 public class CompraForm {
 
-    private Integer cdCliente;
-
-    private Integer cdCompra;
+    private String docCliente;
 
     private Double valorCompra;
 
-    public Integer getCdCliente() {
-        return cdCliente;
-    }
-
-    public Integer getCdCompra() {
-        return cdCompra;
-    }
+    public String getDocCliente() { return docCliente; }
 
     public Double getValorCompra() {
         return valorCompra;
     }
 
+    public Compra getNovaCompra() {
+        return new Compra(this.getValorCompra());
+    }
+
     @Override
     public String toString() {
         return "CompraForm{" +
-                "cdCliente:" + cdCliente +
-                ", cdCompra:" + cdCompra +
+                "docCliente:" + docCliente +
                 ", valorCompra:" + valorCompra +
                 '}';
     }
