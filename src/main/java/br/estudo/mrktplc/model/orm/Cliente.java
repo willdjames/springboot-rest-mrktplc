@@ -33,6 +33,14 @@ public class Cliente {
         this.compras.add(novaCompra);
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
     public List<Compra> getCompras(){
         return this.compras;
     }
