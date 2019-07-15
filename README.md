@@ -5,7 +5,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [X] Criar projeto no spring initializr
 - [X] POST /compras | body:{docCliente, valorCompra}
 - [X] GET /clientes | listar todos clientes
-- [ ] GET /clientes/{id}/compras | das compras do cliente
+- [X] GET /clientes/{id}/compras | das compras do cliente
 - [X] Console do H2
 - [X] ORM do banco de dados e inserts
 - [X] Persistencia da compra

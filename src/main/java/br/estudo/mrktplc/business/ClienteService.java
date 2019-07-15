@@ -16,4 +16,8 @@ public class ClienteService {
     public List<Cliente> buscaTodosClientes() {
         return clienteJpaRepository.findAll();
     }
+
+    public Cliente buscaTodasComprasDoCliente(String documento){
+        return clienteJpaRepository.buscaComprasDoCliente(documento);
+    }
 }
