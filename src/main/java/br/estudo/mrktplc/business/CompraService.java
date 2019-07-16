@@ -1,8 +1,7 @@
 package br.estudo.mrktplc.business;
 
-import br.estudo.mrktplc.mdb.ProcessamentoPagamentosMdb;
+import br.estudo.mrktplc.mdb.PagamentoMdb;
 import br.estudo.mrktplc.model.CompraForm;
-import br.estudo.mrktplc.model.EnvioDeProcesseamentoPgtoDto;
 import br.estudo.mrktplc.model.orm.Cliente;
 import br.estudo.mrktplc.model.orm.Compra;
 import br.estudo.mrktplc.repository.ClienteJpaRepository;
@@ -21,7 +20,7 @@ public class CompraService {
     private ClienteJpaRepository repository;
 
     @Autowired
-    private ProcessamentoPagamentosMdb filaProcessamentoPagamento;
+    private PagamentoMdb filaProcessamentoPagamento;
 
     @Transactional
     public Cliente salva(final CompraForm compra) {
@@ -36,9 +35,6 @@ public class CompraService {
             clienteQueCompra = new Cliente(compra.getDocCliente(), novaCompra);
             repository.saveAndFlush(clienteQueCompra);
         }
-
-        EnvioDeProcesseamentoPgtoDto envioParaProcessarPgto = new EnvioDeProcesseamentoPgtoDto(clienteQueCompra);
-        filaProcessamentoPagamento.enviaCompraParaFilaDeProcessamentoPagamntos(envioParaProcessarPgto);
 
         return clienteQueCompra;
     }

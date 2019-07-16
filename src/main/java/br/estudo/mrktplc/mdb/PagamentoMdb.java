@@ -1,13 +1,13 @@
 package br.estudo.mrktplc.mdb;
 
 import br.estudo.mrktplc.configuration.AppConfiguration;
-import br.estudo.mrktplc.model.EnvioDeProcesseamentoPgtoDto;
+import br.estudo.mrktplc.model.PagamentoDto;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProcessamentoPagamentosMdb {
+public class PagamentoMdb {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -15,7 +15,7 @@ public class ProcessamentoPagamentosMdb {
     @Autowired
     private AppConfiguration appConfiguration;
 
-    public void enviaCompraParaFilaDeProcessamentoPagamntos(EnvioDeProcesseamentoPgtoDto novaCompra){
-        rabbitTemplate.convertAndSend(appConfiguration.getFILA_PROCESSO_PAGAMENTO(), novaCompra);
+    public void enviaParaFilaDePagamentos(PagamentoDto pagamento){
+        rabbitTemplate.convertAndSend(appConfiguration.getFILA_PROCESSO_PAGAMENTO(), pagamento);
     }
 }

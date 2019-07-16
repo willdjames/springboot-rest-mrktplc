@@ -28,10 +28,8 @@ public class CompraController {
 
         Compra compraRealizada = cliente.getCompras().get(cliente.getCompras().size() - 1);
 
-        RespostaDaCompraDto corpoRespostaCompra = new RespostaDaCompraDto(
-                compraRealizada.getCodigo()
-                , compraRealizada.getValor()
-        );
+        RespostaDaCompraDto corpoRespostaCompra =
+                new RespostaDaCompraDto(compraRealizada.getCodigo(), compraRealizada.getValor());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(corpoRespostaCompra);
     }
