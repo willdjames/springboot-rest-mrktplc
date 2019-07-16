@@ -2,7 +2,9 @@ package br.estudo.mrktplc.model;
 
 import br.estudo.mrktplc.model.orm.Compra;
 
-public class CompraForm {
+import java.io.Serializable;
+
+public class CompraForm implements Serializable {
 
     private String docCliente;
 
