@@ -6,7 +6,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [X] POST /compras | body:{docCliente, valorCompra}
 - [X] GET /clientes | listar todos clientes
 - [X] GET /clientes/{id}/compras | das compras do cliente
-- [X] POST /pagamentos | efetua pagamento da compra
+- [X] POST /pagamentos | body:{docCliente, cdCompra, valorCompra} efetua pagamento da compra
 - [X] Console do H2
 - [X] ORM do banco de dados e inserts
 - [X] Persistencia da compra
@@ -14,6 +14,22 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [ ] MDB (Consumidor) do recebimento do pagamento
 - [ ] Atualização do pagamento da compra no BD
 - [ ] Empacotar em container Docker
+
+* Para executar a aplicação com Maven Plugin:
+    > $ mvnw spring-boot:run
+
+* Ou se você ja empacotou com o maven, pode executar usando java -jar:
+    > $ java -jar target/mrktplc-1.0-SNAPSHOT.jar
+
+* Para o serviço /pagametos é preciso, (e recomendo) ter um container Docker de uma imagem de RabbitMQ em execução.
+  Execute para baixar a imagem e iniciar um container:
+    > $ docker run -d --hostname my-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+
+  Faça o login no painel admin do rabbitMQ: http://container-ip:15672
+    usuario:guest / senha:guest
+
+  Crie uma fila com nome 'fila_processo_pagamento' ou que seja o mesmo que a variável do application.properties fila.processo.pagamento
+
 
 
 ### Reference Documentation
