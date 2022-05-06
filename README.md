@@ -13,7 +13,7 @@ Serviço de registro de compra e encaminhamento de pagamento
 - [X] MDB (Produtor) do envio da compra para fila de pagamento
 - [ ] MDB (Consumidor) do recebimento do pagamento
 - [ ] Atualização do pagamento da compra no BD
-- [ ] Empacotar em container Docker
+- [ ] Empacotar em container Docker // criar imagem
 
 * Para executar a aplicação com Maven Plugin:
     > $ mvnw spring-boot:run
